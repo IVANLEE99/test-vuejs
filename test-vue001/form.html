@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue-test001</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        #app{
+            width: 600px;
+            margin: 30px auto;
+        }
+        fieldset{
+            border: 1px solid orange;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+        }
+        fieldset div{
+            margin-left: 20px;
+        }
+        fieldset legend{
+            border: 0;
+            margin: 0;
+            padding: 0;
+            width: 130px;
+            margin-left: 15px;
+        }
+        fieldset input,fieldset select{
+            height: 30px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <fieldset>
+            <legend>测试学生录入</legend>
+            <div>
+                <span>姓名：</span>
+                <input type="text" v-model="newStudent.name">
+            </div>
+            <div>
+                <span>年龄：</span>
+                <input type="text" v-model="newStudent.age">
+            </div>
+            <div>
+                <span>性别：</span>
+                <select name="" id="" v-model="newStudent.sex">
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                </select>
+            </div>
+            <div>
+                <span>号码：</span>
+                <input type="text" v-model="newStudent.phone">
+            </div>
+            <div>
+                <button class="btn btn-default" v-on:click="addNewStudent">添加学生</button>
+            </div>
+
+        </fieldset>
+        
+        <table class="table table-responsive table-bordered">
+            <thead>
+                <td>姓名</td>
+                <td>年龄</td>
+                <td>性别</td>
+                <td>号码</td>
+                <td>删除</td>
+            </thead>
+            <tr v-for="(s,i) in students" v-bind:key="i">
+                <td v-text="s.name"></td>
+                <td v-text="s.age"></td>
+                <td v-text="s.sex"></td>
+                <td v-text="s.phone"></td>
+                <td class="text-center">
+                    <button class="btn btn-xs btn-danger btn-flat" v-on:click="deleteStudent(i)">删除</button>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                students: [{
+                    name: '张三',
+                    age: 25,
+                    sex: '男',
+                    phone: '122222222222'
+                }, {
+                    name: '李四',
+                    age: 25,
+                    sex: '男',
+                    phone: '122228222222222'
+                }, {
+                    name: '王五',
+                    age: 25,
+                    sex: '男',
+                    phone: '122222222222'
+                }, {
+                    name: '赵六',
+                    age: 25,
+                    sex: '女男',
+                    phone: '122222222222'
+                }, {
+                    name: '盒子',
+                    age: 25,
+                    sex: '男',
+                    phone: '122222222222'
+                }],
+                newStudent:{
+                    name: '',
+                    age: '',
+                    sex: '男',
+                    phone: ''
+                }
+            },
+            methods:{
+                addNewStudent:function () {
+                    if(!this.newStudent.name ||!this.newStudent.age ||!this.newStudent.sex ||!this.newStudent.name ||!this.newStudent.phone){
+                        return alert('学生格式错误！请重新输入！')
+                    }
+                    this.students.unshift(this.newStudent);
+                    this.newStudent={
+                    name: '',
+                    age: '',
+                    sex: '男',
+                    phone: ''
+                }
+                },
+                deleteStudent:function (index) {
+                    if (this.students[index]) {
+                        this.students.splice(index,1);
+                        
+                    }
+                    
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
