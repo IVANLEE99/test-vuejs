@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>局部组件</title>
+</head>
+
+<body>
+    <div id="app">
+            <my-date></my-date>
+            <my-date></my-date>
+            <my-color></my-color>
+            <my-color></my-color>
+            <my-color></my-color>
+        </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        //1.创建组件构造器
+        let profile = Vue.extend({
+            template:`
+                <div>
+                    <input type = "date"/>
+                    <p> i am coding</p>
+                </div>
+            `
+        })
+        let profile2 = Vue.extend({
+            template:`
+                <div>
+                    <input type = "color"/>
+                    <p> i am coding</p>
+                </div>
+            `
+        })
+
+        // //2.注册一个全局组件
+        // Vue.component('my-date',profile);
+        let vm = new Vue({
+            el:'#app',
+            data:{
+
+            },
+            components:{
+                'my-date':profile,
+                'my-color':profile2
+            }
+        })
+    </script>
+</body>
+
+</html>
