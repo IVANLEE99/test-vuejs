@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>局部组件</title>
+</head>
+
+<body>
+  <div id="app">
+    {{test}}
+    <my-btn></my-btn>
+    <my-slot></my-slot>
+    <my-slot>
+      我是填充插槽
+      <br>
+      23333
+    </my-slot>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <template id="my-btn">
+      <div>
+        我是按钮
+      </div>
+    </template>
+    <template id='my-slot'>
+      <div>
+        我是插槽
+        <slot>我是默认插槽</slot>
+      </div>
+    </template>
+  <script>
+      Vue.component('my-slot',{
+        template:'#my-slot'
+      });
+        Vue.component('my-btn', {
+            template: '#my-btn'
+          });
+    Vue.component('myslot', {
+      template: '23333'
+    });
+    var vm = new Vue({
+      el: '#app',
+      data:{
+        test:'test'
+      }
+    })
+  </script>
+</body>
+
+</html>
