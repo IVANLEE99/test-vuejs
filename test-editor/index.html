@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>CKEditor</title>
+  <script src="https://cdn.bootcss.com/ckeditor/4.9.1/ckeditor.js"></script>
+  <script src="https://cdn.bootcss.com/ckeditor/4.9.1/lang/zh-cn.js"></script>
+</head>
+
+<body>
+  <textarea name="content" id="editor">This is some sample content.</textarea>
+  <script>
+    CKEDITOR
+      .create(document.querySelector('#editor'))
+      .then(editor => {
+        console.log(editor);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  </script>
+</body>
+
+</html>

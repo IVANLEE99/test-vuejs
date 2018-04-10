@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue-directive</title>
+  <link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+     <anchored-heading :level='0'>2222</anchored-heading>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script>
+  Vue.component('anchored-heading', {
+    render: function (createElement) {
+      return createElement(
+        'h' + this.level,   // tag name 标签名称
+        this.$slots.default // 子组件中的阵列
+      )
+    },
+    props: {
+      level: {
+        type: Number,
+        required: true
+      }
+    }
+  })
+  new Vue({
+    el:'#app'
+  })
+  </script>
+</body>
+
+</html>
