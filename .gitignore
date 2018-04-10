@@ -4,3 +4,4 @@ dist/
 npm-debug.log
 .idea
 element-starter/node_modules/
+*/node_modules/
