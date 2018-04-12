@@ -24,7 +24,8 @@
     <div class="right-part">
       <p class="title">{{currentSong.song_name}}</p>
       <p class="artist">{{currentSong.artist_name}}</p>
-      <div class="lyrics"><p class="">告白气球 - 周杰伦
+      <div class="lyrics">
+        <!-- <p class="">告白气球 - 周杰伦
       </p><p class="">作词：方文山
       </p><p class="">作曲：周杰伦
       </p><p class="">编曲：林迈可
@@ -74,7 +75,9 @@
       </p><p class="">搅拌在一起
       </p><p class="">亲爱的别任性 你的眼睛
       </p><p class="">在说我愿意
-      </p></div>
+      </p> -->
+      <p>暂无歌词</p>
+      </div>
     </div>
     <!-- 这是播放进度条 -->
     <div class="progress">
@@ -82,7 +85,7 @@
       <input type="range" class="progress-range" min="0" max="100" ref="progress" :value="percent">
       <span class="time">{{duration | date}}</span>
     </div>
-    <audio :src="currentSong.listen_file" ref="audio" autoplay='true' preload="metadata" :volume="voice/100" 
+    <audio :src="currentSong.listen_file" ref="audio" preload="metadata" :volume="voice/100" 
     @loadedmetadata="loadedmetadata"
     @durationchange="durationchange"
     @timeupdate="timeupdate"
@@ -95,13 +98,14 @@ export default {
   name: "app",
   data() {
     return {
-      isPlay:true,
+      isPlay:false,
       voice:100,
       times:'',
       currentTime:'',
       duration:'',
       songIndex:2,
       percent:0,
+      lyrics:[],
       songLists: [
         {
           song_id: 1776156051,
@@ -367,6 +371,16 @@ export default {
   },
   created: function() {
     document.addEventListener('keyup', this.handdlekey);
+    this.$http.get('http://127.0.0.1:3000/lyric?url='+this.songLists[this.songIndex].lyric)
+    .then(function (d) {
+      this.lyrics = d;
+      console.log(d);
+      
+    }).catch(function (e) {
+      console.log('error:'+e.message);
+      console.log(e);
+      
+    });
   }
 
 };
