@@ -21,9 +21,68 @@
       </div>
     </div>
     <!-- 右侧的部分歌词标题 -->
-    <div class="right-part"></div>
+    <div class="right-part">
+      <p class="title">告白气球</p>
+      <p class="artist">周杰伦</p>
+      <div class="lyrics"><p class="">告白气球 - 周杰伦
+      </p><p class="">作词：方文山
+      </p><p class="">作曲：周杰伦
+      </p><p class="">编曲：林迈可
+      </p><p class="">制作人：周杰伦
+      </p><p class="">吉他：林迈可
+      </p><p class="">录音师：杨瑞代
+      </p><p class="">录音室：JVR Studio
+      </p><p class="">混音师：林迈可
+      </p><p class="pink">混音室：VIP Music
+      </p><p class="">塞纳河畔 左岸的咖啡
+      </p><p class="">我手一杯 品尝你的美
+      </p><p class="">留下唇印的嘴
+      </p><p class="">花店玫瑰 名字写错谁
+      </p><p class="">告白气球 风吹到对街
+      </p><p class="">微笑在天上飞
+      </p><p class="">你说你有点难追
+      </p><p class="">想让我知难而退
+      </p><p class="">礼物不需挑最贵
+      </p><p class="">只要香榭的落叶
+      </p><p class="">喔 营造浪漫的约会
+      </p><p class="">不害怕搞砸一切
+      </p><p class="">拥有你就拥有 全世界
+      </p><p class="">亲爱的 爱上你 从那天起
+      </p><p class="">甜蜜的很轻易
+      </p><p class="">亲爱的 别任性 你的眼睛
+      </p><p class="">在说我愿意
+      </p><p class="">塞纳河畔 左岸的咖啡
+      </p><p class="">我手一杯 品尝你的美
+      </p><p class="">留下唇印的嘴
+      </p><p class="">花店玫瑰 名字写错谁
+      </p><p class="">告白气球 风吹到对街
+      </p><p class="">微笑在天上飞
+      </p><p class="">你说你有点难追
+      </p><p class="">想让我知难而退
+      </p><p class="">礼物不需挑最贵
+      </p><p class="">只要香榭的落叶
+      </p><p class="">喔 营造浪漫的约会
+      </p><p class="">不害怕搞砸一切
+      </p><p class="">拥有你就拥有 全世界
+      </p><p class="">亲爱的 爱上你 从那天起
+      </p><p class="">甜蜜的很轻易
+      </p><p class="">亲爱的 别任性 你的眼睛
+      </p><p class="">在说我愿意
+      </p><p class="">亲爱的 爱上你 恋爱日记
+      </p><p class="">飘香水的回忆
+      </p><p class="">一整瓶 的梦境 全都有你
+      </p><p class="">搅拌在一起
+      </p><p class="">亲爱的别任性 你的眼睛
+      </p><p class="">在说我愿意
+      </p></div>
+    </div>
     <!-- 这是播放进度条 -->
-    <div class="progress"></div>
+    <div class="progress">
+      <span class="time">00:00</span>
+      <input type="range" class="progress-range" min="0" max="0">
+      <span class="time">00:00</span>
+    </div>
+    <audio src="http://m128.xiami.net/260/1260/2100350206/1776156051_1493963551486.mp3?auth_key=1524020400-0-0-a49230c8a56988278104e1e2149584b9" autoplay='true' preload="metadata"></audio>
   </div>
 </template>
 
@@ -114,12 +173,13 @@ export default {
   }
   .ctr-box{
     background-color: rgba(0, 0, 0, .3);
-    margin: 15% 0 0 10%;
+    margin: 20% 0 0 10%;
     /* width: 200px; */
     /* height: 50px; */
     vertical-align: middle;
     padding-left: 10px;
     border-radius: 10px;
+    width: 39%;
   }
   .pre,.play,.next{
     width: 36px;
@@ -264,10 +324,21 @@ export default {
   left: -4px;
 }
 input[type='range']{
-  appearance: none;
+  /* appearance: none; */
   -webkit-appearance:none;
   height: 8px;
   border-radius: 10px;
+}
+input[type=range]::-webkit-slider-thumb,input[type=range]::-moz-range-thumb,input[type=range]::-ms-thumb{
+    -webkit-appearance: none;
+    height: 13px;
+    width: 13px;
+    border-radius: 13px;
+    background-color: rgb(235, 116, 112);
+    border: 3px solid white;
+    cursor: pointer;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+
 }
 input[type=range]:focus{
   outline: none;
@@ -277,6 +348,53 @@ input[type=range]:focus{
   float: right;
   width: 100px;
   margin: 16px 20px 0 0;
+}
+
+.progress{
+  width: 100%;
+  position: relative;
+  color: #ffffff;
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+}
+.time{
+  color: white;
+}
+.progress-range{
+  background: linear-gradient(to right, rgb(235, 116, 112), rgb(235, 116, 112) 48%, white 48%, white);
+  width: 80%;
+}
+/* 右侧 */
+.right-part{
+  position: absolute;;
+  right: 0;
+  top: 0;
+  width: 50%;
+  height: 600px;
+  overflow: hidden;
+  color: white;
+}
+.title{
+  font-size: 30px;
+  margin: 50px 0 0 30px;
+}
+.artist{
+  margin: 0 30px;
+  font-size: 16px;
+  line-height: 50px;
+  border-bottom: 1px solid #fff;
+}
+.lyrics {
+    margin-top: 20px;
+    padding-right: 25px;
+    width: 100%;
+    height: 400px;
+    line-height: 35px;
+    overflow-y: scroll;
+    color: #fff;
+    white-space: pre-line;
+    text-align: center;
 }
 
 

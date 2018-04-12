@@ -9,4 +9,5 @@ transform-origin
  10px transparent solid
 
  -webkit-appearance
+ white-space
 </code>
