@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import About from './views/About.vue'
 import Todo from './views/Todo'
+import my_todo from './views/my_todo'
 
 Vue.use(Router)
 
@@ -21,6 +22,10 @@ export default new Router({
       path:'/todo',
       name:'todo',
       component:Todo
+    },{
+      path:'/mytodo',
+      name:'mytodo',
+      component:my_todo
     }
   ]
 })

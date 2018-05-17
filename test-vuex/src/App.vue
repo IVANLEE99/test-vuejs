@@ -4,6 +4,7 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
       <router-link to="/todo">TO DO LIST</router-link>      
+      <router-link to="/mytodo">我的备忘录</router-link>      
     </div>
     <router-view/>
   </div>
